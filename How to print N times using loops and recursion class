@@ -1,0 +1,48 @@
+//loop
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n=4;
+    for(int i=0;i<4;i++)
+    {
+        cout<<"Hello"<<endl;
+    }
+    return 0;
+}
+
+//recursion
+#include<iostream>
+using namespace std;
+void solve(int i,int n)
+{
+    if(i>n)
+    {
+        return ;
+    }
+    cout<<"Hello"<<endl;
+    solve(i+1,n);
+}
+int main()
+{
+    int n=4;
+   solve(1,n);
+}
+
+//class
+#include<iostream>
+using namespace std;
+class A{
+    public:
+    A()
+    {
+        cout<<"Hello"<<endl;
+    }
+};
+int main()
+{
+    int n=4;
+    A obj[n];
+    //The no. of times you create the object of the class, the constructor of that class is called that many times.” 
+    return 0;
+}
