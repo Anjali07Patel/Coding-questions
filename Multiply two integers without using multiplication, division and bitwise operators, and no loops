@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+class A
+{
+    public:
+    int solve(int x,int y)
+    {
+        if(y==0)
+        {
+            return 0;
+        }
+        if(y>0)
+        {
+            return (x+solve(x,y-1));
+        }
+        if(y<0)
+        {
+            return -solve(x,-y);
+        }
+    }
+};
+int main()
+{
+    A obj;
+    cout<<obj.solve(5,11);
+    return 0;
+}
