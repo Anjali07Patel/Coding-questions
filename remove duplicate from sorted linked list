@@ -1,4 +1,7 @@
 //iterative way
+
+TC=O(N)
+SC=O(1)
 Node *removeDuplicates(Node *head)
 {
  // your code goes here
@@ -23,6 +26,8 @@ Node *removeDuplicates(Node *head)
 }
 
 //recursive way
+TC=O(N)
+SC=O(N)
 Node *removeDuplicates(Node *head)
 {
  // your code goes here
