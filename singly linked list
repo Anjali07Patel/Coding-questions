@@ -78,6 +78,20 @@ void deletion(Node* & head, int val)
     temp->next=temp->next->next;
     delete todelete;
 }
+//search
+bool search(node* &head ,int key)
+{
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->data==key)
+        {
+            return true;
+        }
+            temp=temp->next;
+    }
+    return false;
+}
 int main()
 {
     Node* head=NULL;
@@ -91,5 +105,7 @@ int main()
    // deletion(head,11);
    deletionAtHead(head);
      display(head);
-    
+     int key;
+     cin>>key;
+     search(head,key)?cout<<"yes":cout<<"no";
 }
