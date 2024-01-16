@@ -1,0 +1,98 @@
+// putting data into array
+bool isPalindrome(Node *head)
+    {
+        //Your code here
+        vector<int>ans;
+        Node* temp=head;
+        while(temp!=NULL)
+        {
+            ans.push_back(temp->data);
+            temp=temp->next;
+        }
+        return solve(ans);
+    }
+    bool solve(vector<int>ans)
+    {
+        int s=0;
+        int e=ans.size()-1;
+        while(s<=e)
+        {
+            if(ans[s]!=ans[e])
+            {
+                return false;
+            }
+            s++;
+            e--;
+        }
+        return true;
+    }
+
+//using stack
+TC=O(2N)
+SC=O(N)
+bool isPalindrome(Node *head)
+    {
+        //Your code here
+        stack<int>st;
+        Node* temp=head;
+        while(temp!=NULL)
+        {
+            st.push(temp->data);
+            temp=temp->next;
+        }
+         temp=head;
+        while(temp!=NULL)
+        {
+            if(temp->data!=st.top())
+            {
+                return false;
+            }
+            temp=temp->next;
+            st.pop();
+        }
+        return true;
+    }
+
+//by reversing half of ll
+TC=O(2N)
+SC=O(1)
+Node* reverse(Node* ptr)
+    {
+        Node* prev=NULL;
+        Node* next=NULL;
+        while(ptr!=NULL)
+        {
+            next=ptr->next;
+            ptr->next=prev;
+            prev=ptr;
+            ptr=next;
+        }
+        return prev;
+    }
+    bool isPalindrome(Node *head)
+    {
+        if(head==NULL || head->next==NULL)
+        {
+            return true;
+        }
+       Node* slow=head;
+       Node* fast=head;
+       while(fast->next!=NULL && fast->next->next!=NULL)
+       {
+           slow=slow->next;
+           fast=fast->next->next;
+       }
+       slow->next= reverse(slow->next);
+      slow=slow->next;
+       Node* temp=head;
+       while(slow!=NULL)
+       {
+           if(temp->data != slow->data)
+           {
+               return false;
+           }
+           temp=temp->next;
+           slow=slow->next;
+       }
+      return true;
+    }
