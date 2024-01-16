@@ -1,0 +1,39 @@
+//using floyd's tortoise hare:
+TC=O(n)
+SC=O(1)
+ bool detectLoop(Node* head)
+    {
+        // your code here
+        Node* slow=head;
+        Node* fast=head;
+        while(fast->next!=NULL && fast->next->next!=NULL) 
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+//using hashmap
+TC=O(N);
+SC=O(N);
+ bool detectLoop(Node* head)
+    {
+       unordered_set<Node*>mp;
+       while(head!=NULL)
+       {
+           if(mp.find(head)!=mp.end())
+           {
+               return true;
+           }
+           mp.insert(head);
+           head=head->next;
+       }
+       return false;
+    }
+
+  
