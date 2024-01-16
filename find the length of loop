@@ -1,0 +1,47 @@
+//usign hashmap
+int countNodesinLoop(struct Node *head)
+{
+    // Code here
+    map<Node* ,int>mp;
+    Node* temp=head;
+    int count=1;
+    while(temp!=NULL)
+    {
+        if(mp.find(temp)!=mp.end())
+        {
+            int value=mp[temp];
+            return count-value;
+        }
+        mp[temp]=count;
+        count++;
+        temp=temp->next;
+    }
+    return 0;
+}
+// tortoise method
+int solve(Node* slow,Node* fast)
+{
+    int count=1;
+   slow=slow->next;
+    while(slow!=fast)
+    {
+        slow=slow->next;
+        count++;
+    }
+    return count;
+}
+int countNodesinLoop(struct Node *head)
+{
+    Node* slow=head;
+    Node* fast=head;
+    while(fast->next!=NULL && fast->next->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+        if(slow==fast)
+        {
+            return solve(slow,fast);
+        }
+    }
+    return 0;
+}
