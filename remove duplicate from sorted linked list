@@ -1,0 +1,47 @@
+//iterative way
+Node *removeDuplicates(Node *head)
+{
+ // your code goes here
+ if(head==NULL || head->next==NULL)
+ {
+     return head;
+ }
+
+     if(head->data==head->next->data)
+     {
+         Node* temp=head->next;
+         delete(temp);
+         head->next=head->next->next;
+         head=removeDuplicates(head);
+     }
+     else
+     {
+     head->next=removeDuplicates(head->next);
+     }
+ 
+ return head;
+}
+
+//recursive way
+Node *removeDuplicates(Node *head)
+{
+ // your code goes here
+ if(head==NULL || head->next==NULL)
+ {
+     return head;
+ }
+
+     if(head->data==head->next->data)
+     {
+         Node* temp=head->next;
+         delete(temp);
+         head->next=head->next->next;
+         head=removeDuplicates(head);
+     }
+     else
+     {
+     head->next=removeDuplicates(head->next);
+     }
+ 
+ return head;
+}
