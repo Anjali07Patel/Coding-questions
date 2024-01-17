@@ -1,0 +1,55 @@
+// using hashmap
+TC=O(N)
+SC=O(N)
+ void removeLoop(Node* head)
+    {
+        unordered_map<Node* ,int>mp;
+        Node* curr=head;
+        while(head->next!=NULL)
+        {
+            if(mp.find(head)==mp.end())
+            {
+                mp[head]=1;
+                curr=head;
+                head=head->next;
+            }
+            else
+            {
+                curr->next=NULL;
+                break;
+            }
+        }
+    }
+
+//optimized
+TC=O(N)
+SC=O(1)
+void removeLoop(Node* head)
+    {
+        if(head==NULL || head->next==NULL)
+        {
+            return ;
+        }
+        Node* slow=head;
+        Node* fast=head;
+        Node* temp=NULL;
+        while(fast!=NULL && fast->next!=NULL)
+        {
+            temp=slow;
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)
+            {
+                slow=head;
+                while(slow!=fast)
+                {
+                   temp=fast;
+                   slow=slow->next;
+                   fast=fast->next;
+                }
+              temp->next=NULL;
+            }
+        }
+        return ;
+        
+    }
